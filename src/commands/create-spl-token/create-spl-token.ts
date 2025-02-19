@@ -81,7 +81,6 @@ export async function createSPLToken() {
 
   assertKeyInObject(values, "metadataUri", "Metadata URI is required.");
   assertKeyInObject(values, "keypair", "Path to keypair is required.");
-  assertKeyInObject(values, "mint", "Path to mint address is required.");
   assertKeyInObject(values, "name", "Token name is required.");
   assertKeyInObject(values, "symbol", "Token symbol is required.");
   assertKeyInObject(values, "url", "RPC url is required.");
@@ -99,6 +98,7 @@ export async function createSPLToken() {
     pathToKeypair,
     `Unable to locate keypair file at path ${pathToKeypair}. Aborting.`
   );
+
   const pathToMintKeypair = resolve(values.mint!);
   assertFileExists(
     pathToMintKeypair,
@@ -126,25 +126,6 @@ export async function createSPLToken() {
   const symbol = values.symbol!;
 
   const mint = await generateKeyPairSigner();
-
-  // const createSPLTokenTransactionPayload = await buildCreateTokenTransaction({
-  //   version: 0,
-  //   feePayer: signer,
-  //   latestBlockhash,
-  //   mint,
-  //   // mintAuthority, // default=same as the `feePayer`
-  //   metadata: {
-  //     isMutable: true, // if the `updateAuthority` can change this metadata in the future
-  //     name,
-  //     symbol,
-  //     uri: metadataUri!,
-  //   },
-  //   decimals,
-  //   tokenProgram: TOKEN_PROGRAM_ADDRESS,
-  //   computeUnitLimit: 19682,
-  //   computeUnitPrice: 10000,
-  // });
-
   const space = BigInt(getMintSize());
 
   let metadataAddress = mint.address;
