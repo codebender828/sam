@@ -9,8 +9,12 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "cli-spinners": "^3.2.0",
+    "@solana-program/compute-budget": "^0.6.1",
+    "@solana-program/system": "^0.6.2",
+    "@solana-program/token": "^0.4.1",
+    "@solana/web3.js": "^2.0.0",
     "consola": "^3.4.0",
-    "gill": "^0.3.0"
+    "gill": "^0.3.0",
+    "ora": "^8.2.0"
   }
 }
