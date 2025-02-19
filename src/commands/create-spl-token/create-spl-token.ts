@@ -114,8 +114,6 @@ export async function createSPLToken() {
 
   // Signer keypair
   const signer = await loadKeypairFromFile(pathToKeypair);
-  // Mint keypair
-  const __mint = await loadKeypairFromFile(pathToMintKeypair);
 
   // get the latest blockhash
   const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
